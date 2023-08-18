@@ -23,7 +23,7 @@
 module uart_tx_fsm(
     input data_valid,
     input ser_done,
-    input clk,
+    input clk1,
     input rst,
     input parity_en,
     output reg [2:0] mux_sel,
@@ -36,7 +36,7 @@ module uart_tx_fsm(
  parameter idle = 3'b000, start = 3'b001, data = 3'b010, parity = 3'b011, stop = 3'b100;
  
  
- always @(posedge clk or negedge rst) begin
+    always @(posedge clk1 or negedge rst) begin
     if(!rst ) begin
         current_state <= idle;
     
