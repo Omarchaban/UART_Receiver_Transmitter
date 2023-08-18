@@ -20,7 +20,6 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module serializer(input wire [7:0] data_in,
-                  input wire load,
                   input wire enable,
                   input wire busy,
                   input wire clk,
