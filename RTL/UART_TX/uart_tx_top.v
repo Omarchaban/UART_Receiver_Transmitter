@@ -28,10 +28,8 @@ module uart_tx_top(
     input parity_en,
     input parity_type,
     output done,
-    output out,
-    output serial_data,//
-    output busy,//
-    output [2:0]current_state//
+    output out
+   
     );
     
     wire busy,parity;
