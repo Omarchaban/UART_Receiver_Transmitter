@@ -23,7 +23,7 @@
 module uart_tx_tb(
     
     );
-    reg clk;
+    reg clk1;
     reg rst;
     reg [7:0] data;
     reg data_valid;
@@ -33,19 +33,19 @@ module uart_tx_tb(
     wire done;
 
     parameter even =1,odd=0;
-    uart_tx_top dut (.clk(clk),.rst(rst),.data(data),.data_valid(data_valid),.parity_en(parity_en)
+	uart_tx_top dut (.clk1(clk1),.rst(rst),.data(data),.data_valid(data_valid),.parity_en(parity_en)
                      ,.done(done),.parity_type(parity_type),.out(out));
                         
      initial begin
         rst=1; #5;
 		rst=0; #5;
         rst=1;
-        clk=0;
+        clk1=0;
            
      end                   
     
     always begin
-        clk = ~clk; #5;
+        clk1 = ~clk1; #5;
     end
     
     
