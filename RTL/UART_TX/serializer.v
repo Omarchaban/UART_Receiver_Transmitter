@@ -22,7 +22,7 @@
 module serializer(input wire [7:0] data_in,
                   input wire enable,
                   input wire busy,
-                  input wire clk,
+                  input wire clk1,
                   input wire rst,
                  
                   output  done,
@@ -31,7 +31,7 @@ module serializer(input wire [7:0] data_in,
 reg [7:0] shift_reg;
 reg [3:0] counter; 
  
-always@(posedge clk or negedge rst) begin
+  always@(posedge clk1 or negedge rst) begin
     if(!rst) begin
         shift_reg=0;
     end
@@ -46,7 +46,7 @@ always@(posedge clk or negedge rst) begin
 end
 
 // Counter sequential logic
-always@(posedge clk or negedge rst) begin
+  always@(posedge clk1 or negedge rst) begin
     if(!rst) begin
         counter<=0;
     end
@@ -60,7 +60,7 @@ always@(posedge clk or negedge rst) begin
     end    
 end
 
-always@(posedge clk or negedge rst) begin
+  always@(posedge clk1 or negedge rst) begin
     if(!rst) begin
         data_out<=0;
     end
