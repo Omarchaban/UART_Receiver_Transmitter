@@ -28,8 +28,6 @@ module uart_tx_fsm(
     input parity_en,
     output reg [2:0] mux_sel,
     output reg ser_en,
-    output reg ser_load,
-    output[2:0] current_state, //
     output reg busy
     );
  
@@ -94,12 +92,7 @@ module uart_tx_fsm(
     case(current_state)
         idle:
             begin
-               // if(data_valid) begin
-              //      ser_load=1;
-               //  end
-                // else begin
-                //    ser_load=0;
-                 //end
+              
                     mux_sel=3'b000;
                     busy=0;
              end   
