@@ -23,7 +23,7 @@
 module parity_calc(
     input [7:0] parity_data,
     input parity_type,
-    input clk,
+    input clk1,
     input rst,
     input busy,
     input parity_en,
@@ -33,7 +33,7 @@ module parity_calc(
     parameter even = 1,odd= 0;
     
     
-    always@(posedge clk or negedge rst) begin
+    always@(posedge clk1 or negedge rst) begin
         if(!rst) begin
             parity=0;
         end
