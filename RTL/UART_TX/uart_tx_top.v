@@ -21,7 +21,7 @@
 
 
 module uart_tx_top(
-    input clk,
+    input clk1,
     input rst,
     input [7:0] data,
     input data_valid,
@@ -38,14 +38,14 @@ module uart_tx_top(
     wire serial_data;
     
     
-    uart_tx_fsm dut1(.data_valid(data_valid),.ser_done(done),.clk(clk),.rst(rst),.parity_en(parity_en),.
+    uart_tx_fsm dut1(.data_valid(data_valid),.ser_done(done),.clk1(clk1),.rst(rst),.parity_en(parity_en),.
                      current_state(current_state),.mux_sel(mux_sel),.busy(busy),.ser_en(ser_en),.ser_load(ser_load));
                      
-    serializer dut2 (.clk(clk),.rst(rst),.busy(busy),.enable(ser_en),.load(ser_load),.data_in(data) 
+    serializer dut2 (.clk1(clk1),.rst(rst),.busy(busy),.enable(ser_en),.load(ser_load),.data_in(data) 
                     ,.data_out(serial_data),.done(done));
                     
                     
-    parity_calc dut3 (.clk(clk),.rst(rst),.parity_type(parity_type),.parity_en(parity_en),.parity_data(data)
+    parity_calc dut3 (.clk1(clk1),.rst(rst),.parity_type(parity_type),.parity_en(parity_en),.parity_data(data)
                       ,.busy(busy),.parity(parity));
                       
     mux8x1      dut4 (.sel(mux_sel),.Data(serial_data),.Parity(parity),.out(out));                  
